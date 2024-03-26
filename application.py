@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 import random
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SIMPLEX])
-app.title = "Flahscards for jazz practice"
+app.title = "Flashcards for jazz practice"
 server = app.server
 
 app.layout = html.Div([
@@ -35,7 +35,7 @@ def update_output(n_clicks, selected_exercises):
 
 def flashcard(selected_exercises):
     keys = ["A", "B♭", "B", "C", "C♯", "D", "E♭", "E", "F", "F♯", "G", "A♭"]
-    scales = ["Δ", "-7", "7"]
+    scales = ["Δ", "-7", "7", "ii-V7-I"]
     return random.choice(keys) + random.choice(scales) + ": " + random.choice(selected_exercises)
 
 if __name__ == '__main__':

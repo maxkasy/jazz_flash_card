@@ -19,8 +19,8 @@ app.layout = html.Div([
     html.Div(style={'height': '25px'}),
     dcc.Checklist(
         id='scale-selection',
-        options=[{'label': " " + i, 'value': i} for i in ["Δ", "-7", "7", "ii-V7-I", "dim7", "+7"]],
-        value=["Δ", "-7", "7", "ii-V7-I", "dim7", "+7"],
+        options=[{'label': " " + i, 'value': i} for i in ["Δ", "-7", "7", "ii-V7-I", "7♭9", "7♯9", "+7"]],
+        value=["Δ", "-7", "7", "ii-V7-I", "7♭9", "7♯9", "+7"],
         inline=True,
         labelStyle={'margin-right': '20px'}
     ),

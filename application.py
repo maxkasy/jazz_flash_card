@@ -8,19 +8,25 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SIMPLEX])
 app.title = "Flashcards for jazz practice"
 server = app.server
 
+# Defining the options showing up in flashcards
+keys = ["A", "B♭", "B", "C", "C♯", "D", "E♭", "E", "F", "F♯", "G", "A♭"]
+exercises = ["Arpeggios", "Chords", "Scales"]
+scales = ["Δ", "-7", "7", "ii-V7-I", "7♭9", "+7", "ø7", "7♭5"]
+
+
 app.layout = html.Div([
     dcc.Checklist(
         id='exercise-selection',
-        options=[{'label': " " + i, 'value': i} for i in ["Arpeggios", "Chords", "Scales"]],
-        value=["Arpeggios", "Chords", "Scales"],
+        options=[{'label': " " + i, 'value': i} for i in exercises],
+        value=exercises,
         inline=True,
         labelStyle={'margin-right': '20px'}
     ),    
     html.Div(style={'height': '25px'}),
     dcc.Checklist(
         id='scale-selection',
-        options=[{'label': " " + i, 'value': i} for i in ["Δ", "-7", "7", "ii-V7-I", "7♭9", "7♯9", "+7"]],
-        value=["Δ", "-7", "7", "ii-V7-I", "7♭9", "7♯9", "+7"],
+        options=[{'label': " " + i, 'value': i} for i in scales],
+        value=scales,
         inline=True,
         labelStyle={'margin-right': '20px'}
     ),
@@ -43,7 +49,6 @@ def update_output(n_clicks, selected_exercises, selected_scales):
         return 'Press Next to start'
 
 def flashcard(selected_exercises, selected_scales):
-    keys = ["A", "B♭", "B", "C", "C♯", "D", "E♭", "E", "F", "F♯", "G", "A♭"]
     return random.choice(keys) + random.choice(selected_scales) + ": " + random.choice(selected_exercises)
 
 if __name__ == '__main__':
